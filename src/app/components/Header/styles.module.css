@@ -1,0 +1,14 @@
+.header {
+  align-self: stretch;
+  background-color: var(--color-black);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 5.25rem;
+  padding: var(--padding-base) var(--padding-29xl);
+
+  @media (max-width: 640px) {
+    padding: var(--padding-base);
+  }
+}
