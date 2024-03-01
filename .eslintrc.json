@@ -104,8 +104,7 @@
         ],
         "pathGroupsExcludedImportTypes": ["builtin"]
       }
-    ],
-    "import/extensions": ["error", "never"]
+    ]
   },
 
   "overrides": [
