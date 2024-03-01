@@ -1,0 +1,6 @@
+.logo {
+  width: 130px;
+  height: 52px;
+  background-color: var(--marvel-red);
+  color: var(--color-white);
+}
