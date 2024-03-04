@@ -16,9 +16,11 @@
 
   /* Layout */
   --max-width: 1512px;
+  --auto-grid-min-size: 10.781rem;
 
   /* Gaps */
   --gap-0: 0rem;
+  --gap-base: 1rem;
 
   /* Paddings */
   --padding-29xl: 3rem;
