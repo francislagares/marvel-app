@@ -1,4 +1,5 @@
 import { Roboto_Condensed } from 'next/font/google';
+import NextTopLoader from 'nextjs-toploader';
 
 import { Header } from './components';
 
@@ -15,6 +16,13 @@ export default function RootLayout({
     <html lang='en'>
       <body className={inter.className}>
         <Header />
+        <NextTopLoader
+          color='#ec1d24'
+          height={6}
+          showSpinner={false}
+          shadow={false}
+          zIndex={99}
+        />
         {children}
       </body>
     </html>
