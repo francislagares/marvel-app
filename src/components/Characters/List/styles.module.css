@@ -4,6 +4,5 @@
     auto-fill,
     minmax(var(--auto-grid-min-size), 1fr)
   );
-
   gap: var(--gap-base);
 }

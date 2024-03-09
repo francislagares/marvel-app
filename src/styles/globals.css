@@ -1,6 +1,6 @@
 :root {
   /* Font Type */
-  --font-roboto-condensed: Roboto Condensed;
+  --font-roboto-condensed: roboto condensed;
 
   /* Font Sizes */
   --font-size-sm: 0.875rem;

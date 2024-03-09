@@ -1,4 +1,4 @@
-import { Favorites, Logo } from '@/app/components/';
+import { Favorites, Logo } from '@/components';
 
 import styles from './styles.module.css';
 

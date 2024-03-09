@@ -8,7 +8,7 @@
   height: 5.25rem;
   padding: var(--padding-base) var(--padding-29xl);
 
-  @media (max-width: 640px) {
+  @media (width <= 640px) {
     padding: var(--padding-base);
   }
 }

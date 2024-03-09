@@ -39,7 +39,6 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "@/components/*": ["src/app/components/*"],
       "vite": ["node_modules/vite"]
     },
     "noEmit": true,

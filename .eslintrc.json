@@ -80,11 +80,15 @@
     "import/order": [
       "error",
       {
-        "newlines-between": "always",
+        "newlines-between": "ignore",
         "groups": [
-          ["builtin"],
-          ["external"],
-          ["parent", "internal", "sibling", "index", "unknown"]
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index",
+          "object"
         ],
         "alphabetize": {
           "order": "asc",
@@ -93,11 +97,84 @@
         "pathGroups": [
           {
             "pattern": "react",
-            "group": "builtin",
+            "group": "external",
             "position": "before"
           },
+
           {
-            "pattern": "@/**",
+            "pattern": "next",
+            "group": "external",
+            "position": "before"
+          },
+
+          {
+            "pattern": "**/next/**",
+            "group": "external",
+            "position": "before"
+          },
+
+          {
+            "pattern": "@/layout/**",
+            "group": "internal",
+            "position": "before"
+          },
+
+          {
+            "pattern": "@/screens/**",
+            "group": "internal",
+            "position": "before"
+          },
+
+          {
+            "pattern": "@/features/**",
+            "group": "internal",
+            "position": "before"
+          },
+
+          {
+            "pattern": "@/components/**",
+            "group": "internal",
+            "position": "before"
+          },
+
+          {
+            "pattern": "@/services/**",
+            "group": "internal",
+            "position": "after"
+          },
+
+          {
+            "pattern": "@/hooks/**",
+            "group": "internal",
+            "position": "before"
+          },
+
+          {
+            "pattern": "@/shared/**",
+            "group": "internal",
+            "position": "before"
+          },
+
+          {
+            "pattern": "@/interfaces/**",
+            "group": "internal",
+            "position": "before"
+          },
+
+          {
+            "pattern": "@/utils/**",
+            "group": "internal",
+            "position": "before"
+          },
+
+          {
+            "pattern": "@/config/**",
+            "group": "internal",
+            "position": "before"
+          },
+
+          {
+            "pattern": "@/events/**",
             "group": "internal",
             "position": "before"
           }
