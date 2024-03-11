@@ -1,6 +1,5 @@
 import Image from 'next/image';
 
-import { Comics } from '@/components/Comics/List/ComicsList';
 import { detailCharacter } from '@/services/api';
 
 import styles from './styles.module.css';

@@ -5,6 +5,9 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  z-index: 999;
   height: 5.25rem;
   padding: var(--padding-base) var(--padding-29xl);
 
