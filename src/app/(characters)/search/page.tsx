@@ -5,7 +5,7 @@ import { CharacterCard } from '@/components';
 import { Character } from '@/models/character';
 import { searchCharacters } from '@/services/api';
 
-import styles from './styles.module.css';
+import styles from '../styles/styles.module.css';
 
 const SearchPage = () => {
   const searchParams = useSearchParams();
