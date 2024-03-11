@@ -1,3 +1,5 @@
+import { Comic } from './comic';
+
 export interface Character {
   id: number;
   name: string;
@@ -6,9 +8,12 @@ export interface Character {
     path: string;
     extension: string;
   };
-  resourceURI: string;
+  comics: {
+    items: Comic[];
+  };
 }
 
 export interface CharacterDataWrapper {
   results: Character[];
+  count: number;
 }

@@ -8,10 +8,13 @@ export const CharactersList = async () => {
   const characters = await getCharacters();
 
   return (
-    <section className={styles.charactersList}>
-      {characters?.results.map((character: Character) => (
-        <CharacterCard key={character.id} character={character} />
-      ))}
-    </section>
+    <>
+      <div className={styles.resultsCount}>{`${characters.count} RESULTS`}</div>
+      <section className={styles.charactersList}>
+        {characters?.results.map((character: Character) => (
+          <CharacterCard key={character.id} character={character} />
+        ))}
+      </section>
+    </>
   );
 };

@@ -1,0 +1,75 @@
+.characterDetails {
+  padding: 0 var(--padding-29xl);
+  color: var(--color-white);
+  font-size: 2.5rem;
+  background-color: var(--color-black);
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  position: relative;
+}
+
+.characterDetails::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border-left: 24px solid var(--color-black);
+  border-bottom: 24px solid var(--color-white);
+  width: 0;
+}
+
+.characterSummary {
+  width: 60rem;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+
+  @media (width <= 683px) {
+    display: block;
+  }
+}
+
+.characterImage {
+  @media (width <= 683px) {
+    width: 100vw;
+    height: auto;
+  }
+}
+
+.characterInfo {
+  align-self: stretch;
+  flex: 1;
+  background-color: var(--color-black);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--padding-29xl) 0 var(--padding-29xl) var(--padding-29xl);
+  gap: 1.5rem 0;
+
+  @media (width >= 641px) and (width <= 682px) {
+    padding: var(--padding-29xl) var(--padding-base) 0;
+  }
+
+  @media (width <= 640px) {
+    padding: var(--padding-base) var(--padding-base) var(--padding-29xl);
+  }
+}
+
+.characterTitle {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  text-transform: uppercase;
+}
+
+.characterDescription {
+  align-self: stretch;
+  position: relative;
+  font-size: var(--font-size-base);
+}

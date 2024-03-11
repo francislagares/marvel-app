@@ -22,8 +22,3 @@
 .searchInput:focus {
   outline: none;
 }
-
-.resultsCount {
-  font-size: var(--font-size-xs);
-  margin-bottom: 2rem;
-}

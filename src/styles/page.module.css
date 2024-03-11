@@ -1,8 +1,0 @@
-.main {
-  padding: 3rem;
-  min-height: 100vh;
-
-  @media (width <= 640px) {
-    padding: var(--padding-base);
-  }
-}
