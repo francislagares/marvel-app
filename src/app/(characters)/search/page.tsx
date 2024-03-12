@@ -1,43 +1,29 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { CharacterCard } from '@/components';
+import { useCharactersContext } from '@/context/CharactersContext';
 import { Character } from '@/models/character';
-import { searchCharacters } from '@/services/api';
 
 import styles from '../styles/styles.module.css';
 
 const SearchPage = () => {
   const searchParams = useSearchParams();
   const querySearch = searchParams.get('query');
-  const [characters, setCharacters] = useState<Character[]>([]);
+  const { characters, fetchCharacters } = useCharactersContext();
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await searchCharacters(querySearch);
-        setCharacters(data.results);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
     if (querySearch) {
-      fetchData();
+      fetchCharacters(querySearch);
     }
-  }, [querySearch]);
+  }, [querySearch, fetchCharacters]);
 
   return (
-    <>
-      <div
-        className={styles.resultsCount}
-      >{`${characters.length} RESULTS`}</div>
-      <section className={styles.charactersList}>
-        {characters?.map((character: Character) => (
-          <CharacterCard key={character.id} character={character} />
-        ))}
-      </section>
-    </>
+    <section className={styles.charactersList}>
+      {characters?.results.map((character: Character) => (
+        <CharacterCard key={character.id} character={character} />
+      ))}
+    </section>
   );
 };
 

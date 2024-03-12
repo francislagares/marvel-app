@@ -3,6 +3,7 @@ import { Roboto_Condensed } from 'next/font/google';
 import NextTopLoader from 'nextjs-toploader';
 
 import { Header } from '@/components';
+import { CharactersProvider } from '@/context/CharactersContext';
 
 import '@/styles/globals.css';
 
@@ -31,7 +32,7 @@ export default function RootLayout({
           shadow={false}
           zIndex={99}
         />
-        {children}
+        <CharactersProvider>{children}</CharactersProvider>
       </body>
     </html>
   );
