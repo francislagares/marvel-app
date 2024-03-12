@@ -1,9 +1,9 @@
-import { env } from '@/env';
 import { CharacterDataWrapper } from '@/models/character';
+import { ComicDataWrapper } from '@/models/comic';
 import { createQueryKey, getTimestamp } from '@/utils';
 
 const timeStamp = getTimestamp();
-const query = createQueryKey(timeStamp, env.MARVEL_API_PUBLIC_KEY);
+const query = createQueryKey(timeStamp, process.env.MARVEL_API_PUBLIC_KEY!);
 
 const responseHandler = async <T>(response: Response) => {
   if (!response.ok) {
@@ -15,8 +15,31 @@ const responseHandler = async <T>(response: Response) => {
 };
 
 export const getCharacters = async () => {
-  const url = `${env.MARVEL_API_URL}/characters?limit=50&${query}`;
+  const url = `${process.env.MARVEL_API_URL}/characters?limit=50&${query}`;
   const response = await fetch(url);
 
   return responseHandler<CharacterDataWrapper>(response);
+};
+
+export const detailCharacter = async (characterId: string) => {
+  const url = `${process.env.MARVEL_API_URL}/characters/${characterId}?${query}`;
+  const response = await fetch(url);
+
+  return responseHandler<CharacterDataWrapper>(response);
+};
+
+export const searchCharacters = async (
+  querySearch: string | null,
+): Promise<CharacterDataWrapper> => {
+  const url = `${process.env.MARVEL_API_URL}/characters?nameStartsWith=${querySearch}&limit=50&${query}`;
+  const response = await fetch(url);
+
+  return responseHandler<CharacterDataWrapper>(response);
+};
+
+export const getCharacterComics = async (characterId: string) => {
+  const url = `${process.env.MARVEL_API_URL}/characters/${characterId}/comics?limit=20&${query}`;
+  const response = await fetch(url);
+
+  return responseHandler<ComicDataWrapper>(response);
 };

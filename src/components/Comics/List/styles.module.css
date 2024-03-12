@@ -1,0 +1,16 @@
+.comics {
+  padding: var(--padding-29xl);
+  color: var(--color-black);
+}
+
+.comicsList {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 1rem;
+  padding: var(--padding-5xl) 0;
+  overflow-x: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: var(--marvel-red) var(--color-gainsboro);
+  font-size: var(--font-size-base);
+}

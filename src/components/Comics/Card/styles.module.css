@@ -1,0 +1,13 @@
+.comicInfo,
+.comicYear {
+  padding-top: var(--padding-5xs);
+}
+
+.comicTitle {
+  font-size: var(--font-size-base);
+  font-weight: 500;
+}
+
+.comicYear {
+  font-size: var(--font-size-xs);
+}

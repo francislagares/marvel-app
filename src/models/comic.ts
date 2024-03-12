@@ -1,4 +1,13 @@
 export interface Comic {
-  resourceURI: string;
-  name: string;
+  id: number;
+  title: string;
+  thumbnail: {
+    path: string;
+    extension: string;
+  };
+}
+
+export interface ComicDataWrapper {
+  results: Comic[];
+  count: number;
 }
