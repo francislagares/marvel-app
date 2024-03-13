@@ -33,6 +33,9 @@
 
 .characterInfo {
   width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   border-top: 5px solid var(--marvel-red);
 }
 

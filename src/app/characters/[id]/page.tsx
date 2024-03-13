@@ -2,8 +2,9 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 
-import { Comics } from '@/components';
+import { Comics, HeartIcon } from '@/components';
 import { useCharactersContext } from '@/context/CharactersContext';
+import { useFavoritesContext } from '@/context/FavoritesContext';
 import { Character } from '@/models/character';
 import { Comic } from '@/models/comic';
 
@@ -19,8 +20,20 @@ const CharacterPage = ({ params }: CharacterPage) => {
   const { id } = params;
   const { fetchCharacterDetails, fetchCharacterComics } =
     useCharactersContext();
+  const { favorites, isFavorite, addFavorite, removeFavorite } =
+    useFavoritesContext();
   const [character, setCharacter] = useState<Character>();
   const [comics, setComics] = useState<Comic[]>([]);
+
+  const handleFavorites = () => {
+    if (character) {
+      const characterId = character.id ?? 0;
+
+      isFavorite(characterId)
+        ? removeFavorite(characterId)
+        : addFavorite(character);
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,7 +51,7 @@ const CharacterPage = ({ params }: CharacterPage) => {
     if (id) {
       fetchData();
     }
-  }, [id, fetchCharacterDetails, fetchCharacterComics]);
+  }, [id, fetchCharacterDetails, fetchCharacterComics, favorites]);
 
   return (
     <>
@@ -57,6 +70,10 @@ const CharacterPage = ({ params }: CharacterPage) => {
               <div className={styles.characterInfo}>
                 <div className={styles.characterTitle}>
                   <b className={styles.div}>{character.name}</b>
+                  <HeartIcon
+                    isFavorite={isFavorite(character.id)}
+                    onClick={handleFavorites}
+                  />
                 </div>
                 <div className={styles.characterDescription}>
                   {character.description

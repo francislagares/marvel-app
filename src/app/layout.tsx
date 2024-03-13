@@ -4,6 +4,7 @@ import NextTopLoader from 'nextjs-toploader';
 
 import { Header } from '@/components';
 import { CharactersProvider } from '@/context/CharactersContext';
+import { FavoritesProvider } from '@/context/FavoritesContext';
 
 import '@/styles/globals.css';
 
@@ -24,15 +25,19 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={inter.className}>
-        <Header />
-        <NextTopLoader
-          color='#ec1d24'
-          height={6}
-          showSpinner={false}
-          shadow={false}
-          zIndex={99}
-        />
-        <CharactersProvider>{children}</CharactersProvider>
+        <CharactersProvider>
+          <FavoritesProvider>
+            <Header />
+            <NextTopLoader
+              color='#ec1d24'
+              height={6}
+              showSpinner={false}
+              shadow={false}
+              zIndex={99}
+            />
+            {children}
+          </FavoritesProvider>
+        </CharactersProvider>
       </body>
     </html>
   );

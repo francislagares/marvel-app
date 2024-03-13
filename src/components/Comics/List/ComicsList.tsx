@@ -12,6 +12,7 @@ export const Comics = ({ comics }: ComicsList) => {
     <div className={styles.comics}>
       <h1 className={styles.comicsTitle}>COMICS</h1>
       <div className={styles.comicsList}>
+        {comics.length === 0 && <p>No comics found for this character</p>}
         {comics?.map(comic => <ComicCard key={comic.id} comic={comic} />)}
       </div>
     </div>

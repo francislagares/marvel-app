@@ -1,11 +1,18 @@
+'use client';
+import { CharacterCard } from '@/components';
+import { useFavoritesContext } from '@/context/FavoritesContext';
+
 import styles from '../styles/styles.module.css';
 
 const FavoritesPage = () => {
+  const { favorites } = useFavoritesContext();
+
   return (
-    <>
-      <div className={styles.resultsCount}>{` RESULTS`}</div>
-      <section className={styles.charactersList}>Favorite Characters</section>
-    </>
+    <section className={styles.charactersList}>
+      {favorites.map(favorite => (
+        <CharacterCard key={favorite.id} character={favorite} />
+      ))}
+    </section>
   );
 };
 
