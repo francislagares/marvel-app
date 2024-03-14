@@ -1,4 +1,8 @@
 /** @type {import('next').NextConfig} */
+const cspHeader = `
+    upgrade-insecure-requests;
+`;
+
 const nextConfig = {
   env: {
     MARVEL_API_URL: process.env.MARVEL_API_URL,
@@ -20,6 +24,20 @@ const nextConfig = {
   output: 'standalone',
   reactStrictMode: true,
   swcMinify: true,
+
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'Content-Security-Policy',
+            value: cspHeader.replace(/\n/g, ''),
+          },
+        ],
+      },
+    ];
+  },
 };
 
 export default nextConfig;

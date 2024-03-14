@@ -13,7 +13,7 @@ const inter = Roboto_Condensed({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'Marvel App | Official API for Marvel Movies, Characters, Comics, TV',
   icons: {
-    icon: './assets/favicon.ico',
+    icon: '/assets/favicon.ico',
   },
 };
 
