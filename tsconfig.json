@@ -41,6 +41,7 @@
       "@/*": ["src/*"],
       "vite": ["node_modules/vite"]
     },
+    "types": ["vitest/globals"],
     "noEmit": true,
     "incremental": true
   },
