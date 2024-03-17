@@ -44,13 +44,13 @@ export const CharacterCard = ({ character }: CharacterCardProps) => {
         />
         <div className={styles.characterInfo}>
           <div className={styles.name}>{character.name}</div>
-          <HeartIcon
-            small={true}
-            isFavorite={isFavorited}
-            onClick={handleFavorites}
-          />
         </div>
       </Link>
+      <HeartIcon
+        small={true}
+        isFavorite={isFavorited}
+        onClick={handleFavorites}
+      />
     </div>
   );
 };
