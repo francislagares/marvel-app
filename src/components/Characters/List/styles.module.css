@@ -6,8 +6,3 @@
   );
   gap: var(--gap-base);
 }
-
-.resultsCount {
-  font-size: var(--font-size-xs);
-  margin-bottom: 2rem;
-}

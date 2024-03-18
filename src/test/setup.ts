@@ -1,11 +1,28 @@
 import '@testing-library/jest-dom/vitest';
 
 import { cleanup } from '@testing-library/react';
-import { afterAll, afterEach, beforeAll, vi } from 'vitest';
 
+import { server } from '@/mocks/server';
+
+// Mock next/navigation module
 // Establish API mocking before all tests.
 // Mocking methods which are not implemented in JSDOM
 beforeAll(() => {
+  vi.mock('next/navigation', async () => {
+    const actual = await vi.importActual('next/navigation');
+    return {
+      ...actual,
+      useRouter: vi.fn(() => ({
+        push: vi.fn(),
+        replace: vi.fn(),
+      })),
+      useSearchParams: vi.fn(() => ({})),
+      usePathname: vi.fn(),
+    };
+  });
+
+  server.listen();
+
   Object.defineProperty(window, 'matchMedia', {
     writable: true,
     value: vi.fn().mockImplementation(query => ({
@@ -24,8 +41,11 @@ beforeAll(() => {
 // Reset any request handlers that we may add during the tests, so they don't affect other tests.
 // Runs a cleanup after each test case (e.g. clearing jsdom)
 afterEach(() => {
+  server.resetHandlers();
   cleanup();
 });
 
 // Clean up after the tests are finished.
-afterAll(() => {});
+afterAll(() => {
+  server.close();
+});

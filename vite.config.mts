@@ -19,7 +19,11 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'jsdom',
-    setupFiles: './src/setupTests.ts',
+    setupFiles: './src/test/setup.ts',
+    exclude: ['**/e2e/**', '**/node_modules/**'],
+    mockReset: true,
+    restoreMocks: true,
+    clearMocks: true,
     coverage: {
       enabled: true,
       provider: 'v8',

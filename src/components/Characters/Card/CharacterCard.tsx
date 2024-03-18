@@ -32,7 +32,7 @@ export const CharacterCard = ({ character }: CharacterCardProps) => {
   };
 
   return (
-    <div className={styles.characterCard}>
+    <article className={styles.characterCard}>
       <Link href={`/characters/${character.id}`}>
         <Image
           className={styles.characterPhotoIcon}
@@ -51,6 +51,6 @@ export const CharacterCard = ({ character }: CharacterCardProps) => {
         isFavorite={isFavorited}
         onClick={handleFavorites}
       />
-    </div>
+    </article>
   );
 };

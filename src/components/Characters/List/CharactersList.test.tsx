@@ -1,15 +1,15 @@
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import { expect } from 'vitest';
 
+import { render } from '@/test/utils/render';
 import { CharactersList } from './CharactersList';
 
-describe('Characters List', () => {
+describe('CharactersList Component', () => {
   it('displays a list of characters', async () => {
     render(<CharactersList />);
 
-    const character = await screen.findByRole('application');
-    console.log(character);
+    const characterSection = await screen.findByRole('grid');
 
-    expect(character).toBeInTheDocument();
+    expect(characterSection).toBeInTheDocument();
   });
 });

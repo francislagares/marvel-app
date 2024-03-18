@@ -1,6 +1,5 @@
 import { Metadata } from 'next';
 import { Roboto_Condensed } from 'next/font/google';
-import NextTopLoader from 'nextjs-toploader';
 
 import { Header } from '@/components';
 import { CharactersProvider } from '@/context/CharactersContext';
@@ -28,13 +27,6 @@ export default function RootLayout({
         <CharactersProvider>
           <FavoritesProvider>
             <Header />
-            <NextTopLoader
-              color='#ec1d24'
-              height={6}
-              showSpinner={false}
-              shadow={false}
-              zIndex={99}
-            />
             {children}
           </FavoritesProvider>
         </CharactersProvider>

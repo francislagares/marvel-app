@@ -34,7 +34,7 @@ const CharacterPage = ({ params }: CharacterPage) => {
         : addFavorite(character);
     }
   };
-
+  console.log(character);
   useEffect(() => {
     const fetchData = async () => {
       try {

@@ -9,7 +9,7 @@ export const CharactersList = () => {
   const { characters } = useCharactersContext();
 
   return (
-    <section className={styles.charactersList}>
+    <section className={styles.charactersList} role='grid'>
       {characters?.results.map((character: Character) => (
         <CharacterCard key={character.id} character={character} />
       ))}
