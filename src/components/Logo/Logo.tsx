@@ -11,7 +11,9 @@ export const Logo = () => {
     <Link
       href='/'
       onClick={() =>
-        pathname === '/search' ? redirect('/') : router.push('/')
+        pathname === '/search' || pathname.startsWith('/characters/')
+          ? redirect('/')
+          : router.push('/')
       }
     >
       <Image
