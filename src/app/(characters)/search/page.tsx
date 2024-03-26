@@ -1,22 +1,19 @@
 'use client';
-import { useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
+import { useCharacterSearch } from '@/hooks/useCharacterSearch';
 import { CharacterCard } from '@/components';
-import { useCharactersContext } from '@/context/CharactersContext';
 import { Character } from '@/models/character';
 
 import styles from '../styles/styles.module.css';
 
+export const dynamic = 'force-dynamic';
+
 const SearchPage = () => {
   const searchParams = useSearchParams();
   const querySearch = searchParams.get('query');
-  const { characters, fetchCharacters } = useCharactersContext();
+  const { data: characters, isLoading } = useCharacterSearch(querySearch);
 
-  useEffect(() => {
-    if (querySearch) {
-      fetchCharacters(querySearch);
-    }
-  }, [querySearch, fetchCharacters]);
+  if (isLoading) return 'Loading Top Bar Component';
 
   return (
     <section className={styles.charactersList}>

@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 import { Roboto_Condensed } from 'next/font/google';
 
 import { Header } from '@/components';
-import { CharactersProvider } from '@/context/CharactersContext';
 import { FavoritesProvider } from '@/context/FavoritesContext';
+import { ReactQueryProvider } from '@/providers/ReactQueryProvider';
 
 import '@/styles/globals.css';
 
@@ -24,12 +24,12 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={inter.className}>
-        <CharactersProvider>
+        <ReactQueryProvider>
           <FavoritesProvider>
             <Header />
             {children}
           </FavoritesProvider>
-        </CharactersProvider>
+        </ReactQueryProvider>
       </body>
     </html>
   );

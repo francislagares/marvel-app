@@ -1,12 +1,10 @@
 'use client';
-import { useEffect, useState } from 'react';
 import Image from 'next/image';
 
+import { useCharacter } from '@/hooks/useCharacter';
+import { useComics } from '@/hooks/useComics';
 import { Comics, HeartIcon } from '@/components';
-import { useCharactersContext } from '@/context/CharactersContext';
 import { useFavoritesContext } from '@/context/FavoritesContext';
-import { Character } from '@/models/character';
-import { Comic } from '@/models/comic';
 
 import styles from './styles.module.css';
 
@@ -18,12 +16,9 @@ interface CharacterPage {
 
 const CharacterPage = ({ params }: CharacterPage) => {
   const { id } = params;
-  const { fetchCharacterDetails, fetchCharacterComics } =
-    useCharactersContext();
-  const { favorites, isFavorite, addFavorite, removeFavorite } =
-    useFavoritesContext();
-  const [character, setCharacter] = useState<Character>();
-  const [comics, setComics] = useState<Comic[]>([]);
+  const { isFavorite, addFavorite, removeFavorite } = useFavoritesContext();
+  const { data: { results: comics = [] } = {} } = useComics(id);
+  const character = useCharacter(id).data?.results?.[0];
 
   const handleFavorites = () => {
     if (character) {
@@ -34,24 +29,6 @@ const CharacterPage = ({ params }: CharacterPage) => {
         : addFavorite(character);
     }
   };
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const characterData = await fetchCharacterDetails(id);
-        setCharacter(characterData);
-
-        const comicsData = await fetchCharacterComics(id);
-        setComics(comicsData.results);
-      } catch (error) {
-        console.error('Error fetching character details or comics:', error);
-      }
-    };
-
-    if (id) {
-      fetchData();
-    }
-  }, [id, fetchCharacterDetails, fetchCharacterComics, favorites]);
 
   return (
     <>

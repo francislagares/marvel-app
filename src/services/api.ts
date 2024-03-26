@@ -1,4 +1,7 @@
-import { CharacterDataWrapper } from '@/models/character';
+import {
+  CharacterDataWrapper,
+  CharactersDataWrapper,
+} from '@/models/character';
 import { ComicDataWrapper } from '@/models/comic';
 import { createQueryKey, getTimestamp } from '@/utils';
 
@@ -18,10 +21,10 @@ export const getCharacters = async () => {
   const url = `${process.env.MARVEL_API_URL}/characters?limit=50&${query}`;
   const response = await fetch(url);
 
-  return responseHandler<CharacterDataWrapper>(response);
+  return responseHandler<CharactersDataWrapper>(response);
 };
 
-export const detailCharacter = async (characterId: string) => {
+export const characterDetail = async (characterId: string) => {
   const url = `${process.env.MARVEL_API_URL}/characters/${characterId}?${query}`;
   const response = await fetch(url);
 
@@ -30,11 +33,11 @@ export const detailCharacter = async (characterId: string) => {
 
 export const searchCharacters = async (
   querySearch: string | null,
-): Promise<CharacterDataWrapper> => {
+): Promise<CharactersDataWrapper> => {
   const url = `${process.env.MARVEL_API_URL}/characters?nameStartsWith=${querySearch}&limit=50&${query}`;
   const response = await fetch(url);
 
-  return responseHandler<CharacterDataWrapper>(response);
+  return responseHandler<CharactersDataWrapper>(response);
 };
 
 export const getCharacterComics = async (characterId: string) => {

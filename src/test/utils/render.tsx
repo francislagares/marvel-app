@@ -1,13 +1,13 @@
 import { PropsWithChildren, ReactElement } from 'react';
 import { render } from '@testing-library/react';
-import { CharactersProvider } from '@/context/CharactersContext';
 import { FavoritesProvider } from '@/context/FavoritesContext';
+import { ReactQueryProvider } from '@/providers/ReactQueryProvider';
 
 const AllProviders = ({ children }: PropsWithChildren) => {
   return (
-    <CharactersProvider>
+    <ReactQueryProvider>
       <FavoritesProvider>{children}</FavoritesProvider>
-    </CharactersProvider>
+    </ReactQueryProvider>
   );
 };
 
