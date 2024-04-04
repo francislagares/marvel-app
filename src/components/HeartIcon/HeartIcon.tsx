@@ -1,20 +1,33 @@
 'use client';
 import { MouseEventHandler, useEffect, useState } from 'react';
 
+import styles from './styles.module.css';
+
 interface Props {
   small?: boolean;
   isFavorite: boolean;
+  isCardHovered?: boolean;
   onClick: () => void;
 }
 
-export const HeartIcon = ({ small = false, isFavorite, onClick }: Props) => {
+export const HeartIcon = ({
+  small = false,
+  isCardHovered = false,
+  isFavorite,
+  onClick,
+}: Props) => {
   const [isFilled, setIsFilled] = useState<boolean>(isFavorite);
+  const [isHoveredAndFilled, setIsHoveredAndFilled] = useState<boolean>(false);
 
   useEffect(() => {
     setIsFilled(isFavorite);
 
     localStorage.setItem('isFilled', JSON.stringify(isFilled));
   }, [isFilled, isFavorite]);
+
+  useEffect(() => {
+    setIsHoveredAndFilled(isFilled && isCardHovered);
+  }, [isFilled, isCardHovered]);
 
   const handleClick: MouseEventHandler<SVGSVGElement> = e => {
     e.preventDefault();
@@ -23,6 +36,8 @@ export const HeartIcon = ({ small = false, isFavorite, onClick }: Props) => {
 
     setIsFilled(!isFilled);
   };
+
+  const filledHeartColor = isHoveredAndFilled ? '#ffffff' : '#EC1D24';
 
   const smallFilledHeart = (
     <svg
@@ -33,10 +48,11 @@ export const HeartIcon = ({ small = false, isFavorite, onClick }: Props) => {
       viewBox='0 0 13 12'
     >
       <path
-        fill='#EC1D24'
+        fill={filledHeartColor}
         fillRule='evenodd'
         d='M6.572 2.373l-3-1.82-3 1.82v3.902l6 5.115 6-5.115V2.373l-3-1.82-3 1.82z'
         clipRule='evenodd'
+        className={styles.heartIconPath}
       ></path>
     </svg>
   );

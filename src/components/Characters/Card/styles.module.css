@@ -17,6 +17,11 @@
   clip-path: polygon(0 0, 100% 0, 100% 95%, 0 155%);
 }
 
+.characterCard:hover {
+  background-position: 100% -100%;
+  transition: 0.6s;
+}
+
 .characterCard img {
   display: block;
 }
@@ -25,11 +30,6 @@
   position: absolute;
   bottom: 2.1rem;
   right: 2rem;
-}
-
-.characterCard:hover {
-  background-position: 100% -100%;
-  transition: 0.6s;
 }
 
 .characterPhotoIcon {

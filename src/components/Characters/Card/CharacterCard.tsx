@@ -19,6 +19,7 @@ export const CharacterCard = ({ character }: CharacterCardProps) => {
   const [isFavorited, setIsFavorited] = useState<boolean>(
     isFavorite(character.id),
   );
+  const [isHovered, setIsHovered] = useState<boolean>(false);
 
   useEffect(() => {
     // Update isFavorited when the favorites context changes
@@ -32,7 +33,11 @@ export const CharacterCard = ({ character }: CharacterCardProps) => {
   };
 
   return (
-    <article className={styles.characterCard}>
+    <article
+      className={styles.characterCard}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       <Link href={`/characters/${character.id}`}>
         <Image
           className={styles.characterPhotoIcon}
@@ -49,6 +54,7 @@ export const CharacterCard = ({ character }: CharacterCardProps) => {
       <HeartIcon
         small={true}
         isFavorite={isFavorited}
+        isCardHovered={isHovered}
         onClick={handleFavorites}
       />
     </article>
