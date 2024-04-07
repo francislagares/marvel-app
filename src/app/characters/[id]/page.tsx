@@ -1,4 +1,5 @@
 'use client';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 
 import { useCharacter } from '@/hooks/useCharacter';
@@ -18,7 +19,12 @@ const CharacterPage = ({ params }: CharacterPage) => {
   const { id } = params;
   const { isFavorite, addFavorite, removeFavorite } = useFavoritesContext();
   const { data: { results: comics = [] } = {} } = useComics(id);
-  const character = useCharacter(id).data?.results?.[0];
+  const { data: { results: [character] = [] } = {} } = useCharacter(id);
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    setLoaded(true);
+  }, []);
 
   const handleFavorites = () => {
     if (character) {
@@ -33,7 +39,7 @@ const CharacterPage = ({ params }: CharacterPage) => {
   return (
     <>
       {character && (
-        <>
+        <div className={`${styles.wrapper} ${loaded ? styles.slideIn : ''}`}>
           <div className={styles.characterDetails}>
             <section className={styles.characterSummary}>
               <Image
@@ -61,7 +67,7 @@ const CharacterPage = ({ params }: CharacterPage) => {
             </section>
           </div>
           <Comics comics={comics} />
-        </>
+        </div>
       )}
     </>
   );

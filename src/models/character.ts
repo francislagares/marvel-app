@@ -17,9 +17,3 @@ export interface CharactersDataWrapper {
   results: Character[];
   count: number;
 }
-
-export interface CharacterDataWrapper {
-  results: {
-    [key: number]: Character;
-  };
-}

@@ -3,7 +3,7 @@ import { characterDetail } from '@/services/api';
 
 export const useCharacter = (characterId: string) => {
   return useQuery({
-    queryKey: ['characterId'],
+    queryKey: ['characterId', characterId],
     queryFn: () => characterDetail(characterId),
     refetchOnMount: 'always',
   });

@@ -1,3 +1,18 @@
+.wrapper {
+  animation: slideIn 0.6s ease-in forwards; /* Define slide-in animation */
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 .characterDetails {
   padding: 0 var(--padding-29xl);
   color: var(--color-white);
